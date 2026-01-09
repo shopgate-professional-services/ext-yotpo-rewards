@@ -1,0 +1,107 @@
+{
+  "version": "1.0.0",
+  "id": "@shopgate-project/yotpo-rewards",
+  "trusted": true,
+  "components": [
+    {
+      "id": "YotpoRewardsPage",
+      "target": "app.routes",
+      "type": "portals",
+      "path": "frontend/routes/YotpoRewards/index.jsx"
+    },
+      {
+      "id": "TabBarItem",
+      "path": "frontend/portals/TabBarItem/index.jsx",
+      "target": "tab-bar.cart.after",
+      "type": "portals"
+    },
+    {
+      "id": "Subscribers",
+      "path": "frontend/subscriptions/index.js",
+      "type": "subscribers"
+    }
+  ],
+  "configuration": {
+    "guid": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "label": "Yotpo GUID",
+        "description": "GUID needed to load the Yotpo Rewards widget.",
+        "type": "string",
+        "required": true
+      }
+    },
+    "apiKey": {
+      "type": "admin",
+      "destination": "backend",
+      "default": null,
+      "params": {
+        "label": "Yotpo API Key",
+        "description": "API Key needed create a token to identify users at Yotpo.",
+        "type": "string",
+        "required": true
+      }
+    },
+    "rewardsPageInstanceId": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "label": "Rewards page instance ID",
+        "description": "Instance ID of the Rewards Page to be displayed in the PWA.",
+        "type": "string",
+        "required": true
+      }
+    },
+    "rewardsPageTitle": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": "Rewards",
+      "params": {
+        "label": "Rewards page title",
+        "description": "Title of the Rewards Page to be displayed in the PWA.",
+        "type": "string",
+        "required": true
+      }
+    },
+    "tabBarIconLabel": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": "Rewards",
+      "params": {
+        "label": "Tab bar icon label",
+        "type": "text",
+        "required": false
+      }
+    },
+    "tabBarIconSvg": {
+      "type": "admin",
+      "destination": "frontend",
+      "default": null,
+      "params": {
+        "label": "Custom tab bar icon SVG",
+        "description": "Custom SVG code to replace the default tab bar icon.",
+        "type": "text",
+        "required": false
+      }
+    }
+  },
+  "steps": [
+    {
+      "path": "extension/hooks/addYotpoTokenToGetUserResponse.js",
+      "description": "Injects Yotpo token into getUser response",
+      "hooks": [
+        "shopgate.user.getUser.v1:after"
+      ],
+      "input": [
+        { "key" : "mail" }
+      ],
+      "output": [
+        { "key": "yotpoToken", "addPipelineOutput": true }
+      ]
+
+    }
+  ]
+}
