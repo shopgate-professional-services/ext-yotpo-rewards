@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { getCurrentRoute } from '@shopgate/engage/core/selectors';
 import { makeStyles } from '@shopgate/engage/styles';
-import TabBarIcon from '../../components/TabBarIcon';
+import { TabBarIcon } from '../../components';
 import { REWARDS_ROUTE_PATTERN } from '../../constants';
 // eslint-disable-next-line import/extensions
 import { tabBarIconLabel } from '../../config.json';

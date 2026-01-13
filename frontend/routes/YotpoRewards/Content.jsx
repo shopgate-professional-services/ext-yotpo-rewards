@@ -2,12 +2,14 @@ import React, {
   memo, useState, useCallback, useRef,
 } from 'react';
 import { Helmet } from 'react-helmet';
+import { useSelector } from 'react-redux';
+import { getUserData } from '@shopgate/engage/user';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useThemeComponents } from '@shopgate/engage/core/hooks';
 import { View, LoadingIndicator } from '@shopgate/engage/components';
 // eslint-disable-next-line import/extensions
 import { guid, rewardsPageTitle } from '../../config.json';
-import Content from './Content';
+import { RewardsWidget } from '../../components';
 
 const useStyles = makeStyles()({
   loadingContainer: {
@@ -21,14 +23,15 @@ const useStyles = makeStyles()({
 const YOTPO_SCRIPT_ID = 'yotpo-rewards-script';
 
 /**
- * The RewardsRoute component.
+ * The RewardsRouteContent component.
  * @returns {JSX.Element}
  */
-const RewardsRoute = () => {
+const RewardsRouteContent = () => {
   const { classes } = useStyles();
   const { AppBar } = useThemeComponents();
   const [scriptLoaded, setScriptLoaded] = useState(false);
   const pollingRef = useRef(null);
+  const userData = useSelector(getUserData) || {};
 
   /**
    * Callback when the Yotpo script has been loaded.
@@ -71,8 +74,8 @@ const RewardsRoute = () => {
           id={YOTPO_SCRIPT_ID}
         />
       </Helmet>
-      {scriptLoaded ? (
-        <Content />
+      {scriptLoaded && userData?.yotpoToken ? (
+        <RewardsWidget />
       ) : (
         <div className={classes.loadingContainer}>
           <LoadingIndicator />
@@ -82,4 +85,4 @@ const RewardsRoute = () => {
   );
 };
 
-export default memo(RewardsRoute);
+export default memo(RewardsRouteContent);

@@ -1,1 +1,2 @@
-export { default as RewardsRoute } from './RewardsRoute';
+export { default as RewardsWidget } from './RewardsWidget';
+export { default as TabBarIcon } from './TabBarIcon';
