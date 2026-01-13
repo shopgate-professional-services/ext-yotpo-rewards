@@ -7,6 +7,9 @@ import { rewardsPageInstanceId } from '../../config.json';
 
 const useStyles = makeStyles()({
   root: {
+    '& *:focus': {
+      boxShadow: 'none !important',
+    },
     '& .yotpo-widget-campaign-widget-close-button': {
       color: '#fff',
     },
@@ -29,8 +32,12 @@ const useStyles = makeStyles()({
     '& .yotpo-vip-tier-icon': {
       display: 'initial',
     },
-    '& .yotpo-rewards-history *': {
-      outline: 'none',
+    // Hide tiles that open login/registration since such links will break the app
+    '& .yotpo-logged-out-tile': {
+      display: 'none !important',
+    },
+    '& .hidden-element:has(+ .yotpo-logged-out-tile)': {
+      visibility: 'visible !important',
     },
   },
 });
