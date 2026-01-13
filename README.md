@@ -2,6 +2,8 @@
 
 This extension integrates a Shopgate app with the [Yotpo Rewards](https://www.yotpo.com/platform/loyalty). Yotpo is a loyalty provider that rewards the user with points for discounts and free items.
 
+The extension provides a custom route `/yotpo-rewards` that displays the Yotpo Rewards widget. Users need to be logged in to visit this route and will be prompted with a login form if they are not logged in.
+
 ## Configuration
 Set the following values in your Shopgate Connect Admin:
 
@@ -14,6 +16,7 @@ Set the following values in your Shopgate Connect Admin:
 - `rewardsPageTitle` (string) Title for the Rewards Page (default: "Rewards")
 - `tabBarIconLabel` (string) Label for the tab bar icon that opens the Rewards Page (default: "Rewards")
 - `tabBarIconSvg` (string) SVG markup to replace the default tab bar icon e.g. `<path XYZ...>`
+- `hideTabBarIcon` (boolean) Whether to hide the tab bar icon for the Rewards page. When set to `true`, navigation can happen e.g. via a link inside a HTML widget with `<a href="/yotpo-rewards">Rewards</a>`  (default: false)
 
 
 #### API Key and GUID

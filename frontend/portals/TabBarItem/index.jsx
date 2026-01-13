@@ -6,7 +6,7 @@ import { makeStyles } from '@shopgate/engage/styles';
 import { TabBarIcon } from '../../components';
 import { REWARDS_ROUTE_PATTERN } from '../../constants';
 // eslint-disable-next-line import/extensions
-import { tabBarIconLabel } from '../../config.json';
+import { hideTabBarIcon, tabBarIconLabel } from '../../config.json';
 
 const useStyles = makeStyles()({
   icon: {
@@ -32,6 +32,10 @@ const TabBarItem = ({
     e.preventDefault();
     historyPush({ pathname: REWARDS_ROUTE_PATTERN });
   }, [historyPush]);
+
+  if (hideTabBarIcon) {
+    return null;
+  }
 
   return (
     <TabBarAction
