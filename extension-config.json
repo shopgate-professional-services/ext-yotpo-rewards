@@ -9,12 +9,6 @@
       "type": "portals",
       "path": "frontend/routes/YotpoRewards/index.jsx"
     },
-      {
-      "id": "TabBarItem",
-      "path": "frontend/portals/TabBarItem/index.jsx",
-      "target": "tab-bar.cart.after",
-      "type": "portals"
-    },
     {
       "id": "Subscribers",
       "path": "frontend/subscriptions/index.js",
@@ -71,30 +65,8 @@
       "destination": "frontend",
       "default": "Rewards",
       "params": {
-        "label": "Tab bar icon label",
+        "label": "Text of the rewards tab, default \"Rewards\" in every language. Clear it to use the name of the tab bar item in the admin (\"Prämien\" in German shops (de-DE), \"Rewards\" in all others)",
         "type": "text",
-        "required": false
-      }
-    },
-    "tabBarIconSvg": {
-      "type": "admin",
-      "destination": "frontend",
-      "default": null,
-      "params": {
-        "label": "Custom tab bar icon SVG",
-        "description": "Custom SVG code to replace the default tab bar icon.",
-        "type": "text",
-        "required": false
-      }
-    },
-    "hideTabBarIcon": {
-      "type": "admin",
-      "destination": "frontend",
-      "default": false,
-      "params": {
-        "label": "Hide tab bar icon",
-        "description": "Whether to hide the tab bar icon for the Rewards page.",
-        "type": "checkbox",
         "required": false
       }
     }

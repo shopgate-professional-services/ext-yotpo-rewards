@@ -4,6 +4,16 @@ This extension integrates a Shopgate app with the [Yotpo Rewards](https://www.yo
 
 The extension provides a custom route `/yotpo-rewards` that displays the Yotpo Rewards widget. Users need to be logged in to visit this route and will be prompted with a login form if they are not logged in.
 
+## Requirements
+
+PWA 7.35.0 or newer, the first version with a configurable tab bar. Until 7.35.0 is released, the extension declares `@shopgate/engage` `>=7.35.0-alpha.5`; with the release the range moves to `>=7.35.0` and the `@shopgate` dev dependencies to `^7.35.0`, with a fresh lockfile.
+
+## Tab bar
+
+The extension registers the navigation action `@shopgate-project/yotpo-rewards/rewards`. It never adds itself to the tab bar: merchants add "Rewards" ("Prämien" in a German admin) to the tab bar items in the Theme Config of the admin. The tab shows `tabBarIconLabel` as plain text, which defaults to "Rewards" in every language. When the merchant clears the field, the tab shows the name of the item in the admin instead ("Prämien" in German shops (de-DE), "Rewards" in all others). The tab shows the icon `@shopgate-project/yotpo-rewards/rewards`. Merchants replace the icon in the icon library of the admin; by default it is a tag with a heart. The tab opens `/yotpo-rewards` and is highlighted there. Without the tab, navigation can happen e.g. via a link inside an HTML widget: `<a href="/yotpo-rewards">Rewards</a>`.
+
+> **Upgrading from 1.x:** version 1 added its tab after Cart by itself. After the update to version 2, the tab is missing until the merchant adds "Rewards" to the tab bar items in the admin and publishes. The admin offers the item once the shop's app runs version 2, so deploy first, then add it. The settings `hideTabBarIcon` and `tabBarIconSvg` are gone; a custom icon is set in the icon library instead. If the old value isn't a complete `<svg>` element, wrap it in `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">…</svg>` before you upload it.
+
 ## Configuration
 Set the following values in your Shopgate Connect Admin:
 
@@ -14,10 +24,7 @@ Set the following values in your Shopgate Connect Admin:
 
 ### Optional
 - `rewardsPageTitle` (string) Title for the Rewards Page (default: "Rewards")
-- `tabBarIconLabel` (string) Label for the tab bar icon that opens the Rewards Page (default: "Rewards")
-- `tabBarIconSvg` (string) SVG markup to replace the default tab bar icon e.g. `<path XYZ...>`
-- `hideTabBarIcon` (boolean) Whether to hide the tab bar icon for the Rewards page. When set to `true`, navigation can happen e.g. via a link inside a HTML widget with `<a href="/yotpo-rewards">Rewards</a>`  (default: false)
-
+- `tabBarIconLabel` (string) Text of the rewards tab (default: "Rewards" in every language). Clear the field to use the name of the tab bar item in the admin instead ("Prämien" in German shops (de-DE), "Rewards" in all others)
 
 #### API Key and GUID
 
@@ -26,3 +33,12 @@ Set the following values in your Shopgate Connect Admin:
 #### Rewards Page Instance Id
 ![](./images/copy-embed-code-rewards-page.png)
 
+## Development
+
+Install the dependencies of `frontend` from the lockfile and run the checks there:
+
+```shell
+npm ci
+npm run lint
+npm test
+```

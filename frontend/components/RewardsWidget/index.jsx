@@ -3,8 +3,9 @@ import { useSelector } from 'react-redux';
 import { makeStyles } from '@shopgate/engage/styles';
 import { getUserData } from '@shopgate/engage/user';
 import { usePatchWindowScrollTo } from '../../hooks';
-// eslint-disable-next-line import/extensions
-import { rewardsPageInstanceId } from '../../config.json';
+import config from '../../config.json';
+
+const { rewardsPageInstanceId } = config;
 
 const useStyles = makeStyles()({
   root: {
