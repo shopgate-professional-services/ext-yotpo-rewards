@@ -65,7 +65,8 @@
       "destination": "frontend",
       "default": "Rewards",
       "params": {
-        "label": "Text of the rewards tab, default \"Rewards\" in every language. Clear it to use the name of the tab bar item in the admin (\"Prämien\" in German shops (de-DE), \"Rewards\" in all others)",
+        "label": "Rewards tab text",
+        "description": "Default \"Rewards\" in every language. Clear it to use the name of the tab bar item in the admin (\"Prämien\" in German shops (de-DE), \"Rewards\" in all others).",
         "type": "text",
         "required": false
       }

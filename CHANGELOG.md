@@ -29,8 +29,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/) and this p
 
 ### Development
 - Updated the frontend setup: `@shopgate/engage`, `@shopgate/eslint-config` and
-  `@shopgate/pwa-unit-test` as dev dependencies, ESLint 8, Jest, React 17, `react-helmet` 6 as in the PWA, a `lint` script, specs
-  and a `jsconfig.json` for the editor. Removed `prop-types`, `redux` and `reselect`, which nothing imports.
+  `@shopgate/pwa-unit-test` as dev dependencies, ESLint 8, Jest, React 17, `react-helmet` 6 as in
+  the PWA, a `lint` script, specs and a `jsconfig.json` for the editor. Removed `prop-types`,
+  `redux` and `reselect`, which nothing imports.
 - `package-lock.json` is tracked.
 
 ## 1.0.0
