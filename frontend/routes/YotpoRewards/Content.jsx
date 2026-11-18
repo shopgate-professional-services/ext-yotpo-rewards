@@ -7,9 +7,10 @@ import { getUserData } from '@shopgate/engage/user';
 import { makeStyles } from '@shopgate/engage/styles';
 import { useThemeComponents } from '@shopgate/engage/core/hooks';
 import { View, LoadingIndicator } from '@shopgate/engage/components';
-// eslint-disable-next-line import/extensions
-import { guid, rewardsPageTitle } from '../../config.json';
+import config from '../../config.json';
 import { RewardsWidget } from '../../components';
+
+const { guid, rewardsPageTitle } = config;
 
 const useStyles = makeStyles()({
   loadingContainer: {
